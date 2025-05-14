@@ -1,6 +1,3 @@
+import { NativeModules } from "react-native";
 
-import { NativeModules } from 'react-native';
-
-const { RNSplashy } = NativeModules;
-
-export default RNSplashy;
+export default NativeModules.SplashScreen;
