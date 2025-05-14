@@ -1,22 +1,28 @@
-
 package com.reactlibrary;
 
+
+import com.facebook.react.ReactActivity;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
 
-public class RNSplashyModule extends ReactContextBaseJavaModule {
+class RNSplashy extends ReactContextBaseJavaModule {
+    public RNSplashy(ReactApplicationContext reactContext) {
+        super(reactContext);
+    }
 
-  private final ReactApplicationContext reactContext;
+    @Override
+    public String getName() {
+        return "RNSplashy";
+    }
 
-  public RNSplashyModule(ReactApplicationContext reactContext) {
-    super(reactContext);
-    this.reactContext = reactContext;
-  }
+    @ReactMethod
+    public void show() {
+        SplashScreen.show((ReactActivity)getCurrentActivity(), null);
+    }
 
-  @Override
-  public String getName() {
-    return "RNSplashy";
-  }
+    @ReactMethod
+    public void hide() {
+        SplashScreen.hide(getCurrentActivity());
+    }
 }
